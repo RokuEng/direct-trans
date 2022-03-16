@@ -1,5 +1,6 @@
 package main;
 
+import application.JFXApplication;
 import edit.EditWindow;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +16,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("MainStage.fxml"));
-		stage.setScene(new Scene(root));
-		stage.setResizable(false);
-		stage.show();
-
-		new EditWindow(stage).start();
+		Controller.configure(new JFXApplication(root));
+		Controller.start();
 	}
 }

@@ -10,9 +10,10 @@ import org.slf4j.LoggerFactory;
 
 public class EditWindow {
 	private Stage parent;
+	private Stage current;
 
-	public EditWindow(Stage parent) {
-		this.parent = parent;
+	public EditWindow(Stage stage) {
+		this.parent = stage;
 	}
 
 	public void start() {
@@ -23,6 +24,7 @@ public class EditWindow {
 			stage.setResizable(false);
 			stage.initModality(Modality.WINDOW_MODAL);
 			stage.initOwner(parent.getScene().getWindow());
+			current = stage;
 			stage.show();
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(EditWindow.class);
@@ -30,4 +32,10 @@ public class EditWindow {
 			parent.close();
 		}
 	}
+
+	public void close() {
+		current.close();
+	}
+
+	public void save() {}
 }
