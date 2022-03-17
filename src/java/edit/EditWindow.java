@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EditWindow {
+public final class EditWindow {
 	private Stage parent;
 	private Stage current;
 

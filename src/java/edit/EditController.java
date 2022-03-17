@@ -1,4 +1,4 @@
 package edit;
 
-public class EditController {
+public final class EditController {
 }

@@ -7,8 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import utils.TransportGenerator;
 
-public class Main extends Application {
+public final class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -16,7 +17,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("MainStage.fxml"));
-		Controller.configure(new JFXApplication(root));
+		Controller.configure(new JFXApplication(root, null));
 		Controller.start();
+
+//		TransportGenerator.generate(800, "transport");
 	}
 }
