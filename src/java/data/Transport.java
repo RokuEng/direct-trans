@@ -34,8 +34,8 @@ public final class Transport {
 		return carNumber;
 	}
 
-	public Type getCarType() {
-		return tsType;
+	public String getTsType() {
+		return tsType.getText();
 	}
 
 	public int getProductionYear() {

@@ -7,6 +7,7 @@ module direct.trans {
 
 	exports resources;
 
+	opens data;
 	opens resources;
 	opens edit;
 	opens main;

@@ -2,6 +2,7 @@ package main;
 
 import application.JFXApplication;
 import edit.EditWindow;
+import io.database.PostgresSQL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,8 @@ public final class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("MainStage.fxml"));
-		Controller.configure(new JFXApplication(root, null));
+		PostgresSQL database = new PostgresSQL();
+		Controller.configure(new JFXApplication(root, database));
 		Controller.start();
 
 //		TransportGenerator.generate(800, "transport");

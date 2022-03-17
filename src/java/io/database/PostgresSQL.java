@@ -39,26 +39,39 @@ public class PostgresSQL implements Database {
 			List<Transport> list = new ArrayList<>();
 			StringBuilder sb = new StringBuilder();
 
-			sb.append("select * from " + tableName + " where ");
+			sb.append("select * from " + tableName + " where 1>0 and ");
 			if(!model.isEmpty())
-				sb.append(" transport_model = " + model);
+				sb.append(" transport_model = " + dbStyle(model) + " and ");
 			if(!category.isEmpty())
-				sb.append(" transport_category = " + category);
+				sb.append(" transport_category = " + dbStyle(category) + " and ");
 			if(!mark.isEmpty())
-				sb.append(" transport_mark = " + mark);
+				sb.append(" transport_mark = " + dbStyle(mark) + " and ");
 			if(!carNumber.isEmpty())
-				sb.append(" transport_carNumber = " + carNumber);
+				sb.append(" transport_carNumber = " + dbStyle(carNumber) + " and ");
 			if(!hasTrailer.isEmpty())
-				sb.append(" transport_hasTrailer = " + hasTrailer);
+				sb.append(" transport_hasTrailer = " + hasTrailer + " and ");
 			if(!productionYear.isEmpty())
-				sb.append(" transport_productionYear = " + productionYear);
-			if(!tsType.isEmpty())
-				sb.append(" transport_tsType = " + tsType);
+				sb.append(" transport_productionYear = " + productionYear + " and ");
+			if(tsType!="null" && !tsType.equals(""))
+				sb.append(" transport_tsType = " + dbStyle(tsType) + " and ");
+			sb.append(" 1 > 0");
+
+			Logger logger = LoggerFactory.getLogger(this.getClass());
+			logger.info(sb.toString());
 
 			ResultSet result = statement.executeQuery(sb.toString());
 
 			while (result.next()) {
-				list.add(new Transport(mark,model,category,carNumber,Type.getType(tsType),Integer.valueOf(productionYear),Boolean.valueOf(hasTrailer)));
+				list.add(new Transport(
+					result.getString("transport_mark"),
+					result.getString("transport_model"),
+					result.getString("transport_category"),
+					result.getString("transport_carNumber"),
+					Type.getType(result.getString("transport_tsType")),
+					result.getInt("transport_productionYear"),
+					result.getBoolean("transport_hasTrailer")
+					)
+				);
 			}
 
 			return list;
@@ -77,15 +90,6 @@ public class PostgresSQL implements Database {
 	@Override
 	public void insert(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType) throws Exception {
 		Logger logger = LoggerFactory.getLogger(this.getClass());
-//		logger.info("insert into " + tableName + " values ( " +
-//			dbStyle(carNumber) + "," +
-//			dbStyle(model) + "," +
-//			dbStyle(category) + "," +
-//			dbStyle(mark) + "," +
-//			hasTrailer + "," +
-//			productionYear + "," +
-//			dbStyle(tsType) + " )"
-//		);
 		statement.executeUpdate("insert into " + tableName + " values ( " +
 			dbStyle(carNumber) + "," +
 			dbStyle(model) + "," +

@@ -3,6 +3,7 @@ package data;
 import java.util.*;
 
 public enum Type {
+	EMPTY(""),
 	GENERAL_PURPOSE_CAR("Легковой автомобиль общего назначения"),
 	SPECIAL_PASSENGER_CAR("Специальный легковой автомобиль"),
 	GENERAL_PURPOSE_TRUCK("Грузовой автомобиль общего назначения"),

@@ -15,6 +15,7 @@ public final class JFXApplication extends Application {
 	@Override
 	public void startApplication() {
 		Stage stage = new Stage();
+		database.connect("transport");
 		stage.setScene(new Scene(mainParent));
 		stage.setResizable(false);
 		stage.show();

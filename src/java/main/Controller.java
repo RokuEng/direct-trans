@@ -7,10 +7,12 @@ import edit.EditWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Locale;
 
 public final class Controller {
 	private static Application app;
@@ -35,7 +37,28 @@ public final class Controller {
 	private Button editButton;
 
 	@FXML
-	private TableView<?> dataTable;
+	private TableColumn<Transport, String> markColumn;
+
+	@FXML
+	private TableColumn<Transport, String> modelColumn;
+
+	@FXML
+	private TableColumn<Transport, String> typeColumn;
+
+	@FXML
+	private TableColumn<Transport, String> productionYearColumn;
+
+	@FXML
+	private TableColumn<Transport, String> categoryColumn;
+
+	@FXML
+	private TableColumn<Transport, String> trailerColumn;
+
+	@FXML
+	private TableColumn<Transport, String> carNumberColumn;
+
+	@FXML
+	private TableView dataTable;
 
 	@FXML
 	private ComboBox tsTypeBox;
@@ -60,6 +83,15 @@ public final class Controller {
 
 	@FXML
 	public void initialize() {
+
+		markColumn.setCellValueFactory(new PropertyValueFactory("mark"));
+		modelColumn.setCellValueFactory(new PropertyValueFactory("model"));
+		typeColumn.setCellValueFactory(new PropertyValueFactory("tsType"));
+		productionYearColumn.setCellValueFactory(new PropertyValueFactory("productionYear"));
+		categoryColumn.setCellValueFactory(new PropertyValueFactory("category"));
+		trailerColumn.setCellValueFactory(new PropertyValueFactory("hasTrailer"));
+		carNumberColumn.setCellValueFactory(new PropertyValueFactory("carNumber"));
+
 		for (Type type : Type.getTypes()) {
 			tsTypeBox.getItems().add(type.getText());
 		}
@@ -70,16 +102,6 @@ public final class Controller {
 		Logger logger = LoggerFactory.getLogger(EditWindow.class);
 		logger.info("Find transport button is pressed");
 
-		logger.info(
-			modelField.getCharacters().toString() + " " +
-			categoryField.getCharacters().toString() + " " +
-			markField.getCharacters().toString() + " " +
-			carNumberField.getCharacters().toString() + " " +
-			hasTrailerField.getCharacters().toString() + " " +
-			productionYearField.getCharacters().toString() + " " +
-			tsTypeBox.getValue().toString()
-		);
-
 		List<Transport> transports = app.findTransports(
 			modelField.getCharacters().toString(),
 			categoryField.getCharacters().toString(),
@@ -87,8 +109,13 @@ public final class Controller {
 			carNumberField.getCharacters().toString(),
 			hasTrailerField.getCharacters().toString(),
 			productionYearField.getCharacters().toString(),
-			tsTypeBox.getValue().toString()
+			String.valueOf(tsTypeBox.getValue())
 		);
+
+		dataTable.getItems().clear();
+		for (Transport ts : transports) {
+			dataTable.getItems().add(ts);
+		}
 	}
 
 	@FXML
@@ -96,5 +123,14 @@ public final class Controller {
 		Logger logger = LoggerFactory.getLogger(EditWindow.class);
 		logger.info("Open Edit button is pressed");
 		app.createEditStage();
+	}
+
+	private String toBooleanString(String s) {
+		switch (s.toLowerCase(Locale.ROOT)) {
+			case "есть":
+				return "true";
+			default:
+				return "false";
+		}
 	}
 }
