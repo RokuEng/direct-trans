@@ -1,7 +1,6 @@
 package util;
 
 import data.Attribute;
-import data.Field;
 import data.Type;
 import io.database.Database;
 import io.database.PostgresSQL;

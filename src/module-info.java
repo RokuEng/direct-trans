@@ -5,8 +5,6 @@ module direct.trans {
 	requires slf4j.api;
 	requires java.sql;
 
-	exports resources;
-
 	opens data;
 	opens resources;
 	opens edit;

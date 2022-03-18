@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import resources.ResourceAnchor;
 
-import java.io.FileInputStream;
 import java.util.Properties;
 
 public final class Access {

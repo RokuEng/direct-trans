@@ -1,19 +1,15 @@
 package io.database;
 
 import data.Attribute;
-import data.Field;
 import data.Transport;
 import data.Type;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import io.Access;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static data.Field.*;
 
 public class PostgresSQL implements Database {
 

@@ -2,7 +2,6 @@ package main;
 
 import application.Application;
 import data.Attribute;
-import data.Field;
 import data.Transport;
 import data.Type;
 import edit.EditController;
