@@ -1,5 +1,7 @@
-package utils;
+package util;
 
+import data.Attribute;
+import data.Field;
 import data.Type;
 import io.database.Database;
 import io.database.PostgresSQL;
@@ -7,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Random;
+
+import static data.Field.*;
 
 public class TransportGenerator {
 
@@ -26,15 +30,18 @@ public class TransportGenerator {
 				throw new RuntimeException();
 			}
 			for(int i = 100; i < 100+count; i++) {
-				//database.insert(
-				//	pickRandom(MODELS),
-				//	pickRandom(CATEGORIES),
-				//	pickRandom(MARKS),
-				//	pickRandom(LETTERS) + i + pickRandom(LETTERS) + pickRandom(LETTERS),
-				//	pickRandom(STATEMENTS),
-				//	String.valueOf((1900 + random.nextInt(123))),
-				//	pickRandom(TYPES)
-				//);
+				database.insert(
+					pickRandom(MODELS),
+					new Attribute(pickRandom(CATEGORIES), CATEGORY),
+					new Attribute(pickRandom(MARKS), MARK),
+					new Attribute(
+						pickRandom(LETTERS) + i + pickRandom(LETTERS) + pickRandom(LETTERS),
+						CAR_NUMBER
+					),
+					new Attribute(pickRandom(STATEMENTS), HAS_TRAILER),
+					new Attribute(String.valueOf((1900 + random.nextInt(123))), PRODUCTION_YEAR),
+					new Attribute(pickRandom(TYPES), TS_TYPE)
+				);
 			}
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(PostgresSQL.class);

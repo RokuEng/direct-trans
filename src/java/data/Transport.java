@@ -45,4 +45,17 @@ public final class Transport {
 	public boolean isHasTrailer() {
 		return hasTrailer;
 	}
+
+	@Override
+	public String toString() {
+		return "Transport{" +
+			"mark='" + mark + '\'' +
+			", model='" + model + '\'' +
+			", category='" + category + '\'' +
+			", carNumber='" + carNumber + '\'' +
+			", tsType=" + tsType +
+			", productionYear=" + productionYear +
+			", hasTrailer=" + hasTrailer +
+			'}';
+	}
 }
