@@ -116,9 +116,10 @@ public final class Controller {
 			new Attribute(carNumberField.getText(), CAR_NUMBER),
 			new Attribute(hasTrailerField.getText(), HAS_TRAILER),
 			new Attribute(productionYearField.getText(),PRODUCTION_YEAR),
-			new Attribute(String.valueOf(tsTypeBox.getValue()),TS_TYPE)
+			new Attribute(tsTypeBox.getValue() == null ? "" : tsTypeBox.getValue().toString(),TS_TYPE)
 		);
 
+		dataTable.refresh();
 		dataTable.getItems().clear();
 		for (Transport ts : transports) {
 			dataTable.getItems().add(ts);

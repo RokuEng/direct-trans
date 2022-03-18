@@ -41,6 +41,6 @@ public enum Type {
 	}
 
 	public static Type getType(String text) {
-		return map.get(text);
+		return map.get(text.equals("null") ? "" : text);
 	}
 }

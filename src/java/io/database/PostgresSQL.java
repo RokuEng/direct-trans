@@ -20,7 +20,6 @@ public class PostgresSQL implements Database {
 	private final String DB_USERNAME = Access.getDBUsername();
 	private final String DB_PASSWORD = Access.getDBPassword();
 	private final String DB_URL = Access.getDBUrl();
-
 	private Connection connection;
 	private Statement statement;
 	private String tableName;
@@ -73,6 +72,7 @@ public class PostgresSQL implements Database {
 				);
 			}
 
+			logger.info(list.toString());
 			return list;
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(PostgresSQL.class);
