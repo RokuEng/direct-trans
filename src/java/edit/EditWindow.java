@@ -1,19 +1,31 @@
 package edit;
 
+import data.Type;
+import io.database.Database;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class EditWindow {
+	protected static EditWindow CURRENT_WINDOW;
+	protected Database database;
 	private Stage parent;
 	private Stage current;
 
-	public EditWindow(Stage stage) {
+	public EditWindow(Stage stage, Database database) {
 		this.parent = stage;
+		this.database = database;
+		CURRENT_WINDOW = this;
 	}
 
 	public void start() {
@@ -37,5 +49,7 @@ public final class EditWindow {
 		current.close();
 	}
 
-	public void save() {}
+	public void save() {
+
+	}
 }

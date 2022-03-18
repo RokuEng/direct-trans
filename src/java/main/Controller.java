@@ -3,6 +3,7 @@ package main;
 import application.Application;
 import data.Transport;
 import data.Type;
+import edit.EditController;
 import edit.EditWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +24,12 @@ public final class Controller {
 
 	public static void start() {
 		try {
+			EditController.configure(app);
 			app.startApplication();
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(EditWindow.class);
-			logger.error("Contoller isn't configurated error ", e);
+			logger.error("Main controller isn't configured error ", e);
+			throw new RuntimeException();
 		}
 	}
 

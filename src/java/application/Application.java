@@ -1,7 +1,7 @@
 package application;
 
+import data.Attribute;
 import data.Transport;
-import data.Type;
 import edit.EditWindow;
 import io.database.Database;
 import javafx.scene.Parent;
@@ -22,5 +22,6 @@ public abstract class Application {
 	public abstract void closeEditStage();
 	public abstract void saveTransport();
 	public abstract List<Transport> findTransports(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType);
-	public abstract boolean updateTransports();
+	public abstract boolean updateTransports(String carNumber, Attribute... attributes);
+	public abstract boolean hasCarNumber(String carNumber);
 }

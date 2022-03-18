@@ -2,9 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -33,44 +32,30 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <TextField fx:id="modelField" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <TextField fx:id="markField" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <TextField fx:id="categoryField" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField prefWidth="15.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+      <TextField fx:id="hasTrailerField" prefWidth="15.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="6" GridPane.rowIndex="1">
+      <TextField fx:id="carNumberField" GridPane.columnIndex="6" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="6" GridPane.rowIndex="2">
+      <TextField fx:id="productionYearField" GridPane.columnIndex="6" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="4.0" />
          </GridPane.margin></TextField>
-      <TextField GridPane.columnIndex="6" GridPane.rowIndex="3">
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
-         <GridPane.margin>
-            <Insets right="4.0" />
-         </GridPane.margin>
-      </TextField>
       <Text layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Марка" textAlignment="RIGHT" wrappingWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="17.0" />
@@ -106,25 +91,12 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="146.0" text="Редактировать ТС" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="6">
+      <Label fx:id="logField" alignment="CENTER" prefHeight="36.0" prefWidth="300.0" style="-fx-background-color: lightgrey; -fx-border-image-width: 2px; -fx-border-color: grey;" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="5">
          <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Label alignment="CENTER" prefHeight="36.0" prefWidth="300.0" style="-fx-background-color: lightgrey; -fx-border-image-width: 2px; -fx-border-color: grey;" text="Транспортное средство уже существует!" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.rowIndex="5">
-         <font>
-            <Font size="15.0" />
+            <Font size="13.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="151.0" text="Создать ТС" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="4.0" />
-         </GridPane.margin>
-      </Button>
-      <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="161.0" text="Сохранить" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="6">
+      <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="36.0" prefWidth="161.0" text="Сохранить" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
@@ -132,5 +104,10 @@
             <Insets left="4.0" />
          </GridPane.margin>
       </Button>
+      <ComboBox fx:id="tsTypeBox" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+         <padding>
+            <Insets right="4.0" />
+         </padding>
+      </ComboBox>
    </children>
 </GridPane>

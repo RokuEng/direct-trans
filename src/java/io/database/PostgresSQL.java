@@ -1,14 +1,19 @@
 package io.database;
 
+import data.Attribute;
+import data.Field;
 import data.Transport;
 import data.Type;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import io.Access;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static data.Field.*;
 
 public class PostgresSQL implements Database {
 
@@ -25,6 +30,7 @@ public class PostgresSQL implements Database {
 		try {
 			connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 			statement = connection.createStatement();
+			statement.setQueryTimeout(4);
 			this.tableName = tableName;
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(PostgresSQL.class);
@@ -83,22 +89,59 @@ public class PostgresSQL implements Database {
 	}
 
 	@Override
-	public void update(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType) {
+	public void update(String carNumber, Attribute... attributes) throws Exception {
+		StringBuilder sb = new StringBuilder();
+		sb.append("update " + tableName + " set ");
 
+		for (Attribute p : attributes) {
+			if (!p.getData().isBlank()) {
+				sb.append(p.getField().getString() + " = " + dbStyle(p.getData()) + ",");
+			}
+		}
+
+		sb.replace(sb.length()-1,sb.length(),"");
+		sb.append(" where transport_carNumber = " + dbStyle(carNumber));
+
+		Logger logger = LoggerFactory.getLogger(this.getClass());
+		logger.info(sb.toString());
+		statement.executeLargeUpdate(sb.toString());
 	}
 
 	@Override
-	public void insert(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType) throws Exception {
+	public void insert(String carNumber, Attribute... attributes) throws Exception {
+		StringBuilder sb = new StringBuilder();
+		sb.append("insert into " + tableName + " values ( ");
+		sb.append(dbStyle(carNumber) + ",");
+
+		for (Attribute p : attributes) {
+			sb.append(dbStyle(p.getData()) + ",");
+		}
+
+		sb.replace(sb.length()-1,sb.length(),"");
+		sb.append(")");
+
 		Logger logger = LoggerFactory.getLogger(this.getClass());
-		statement.executeUpdate("insert into " + tableName + " values ( " +
-			dbStyle(carNumber) + "," +
-			dbStyle(model) + "," +
-			dbStyle(category) + "," +
-			dbStyle(mark) + "," +
-			hasTrailer + "," +
-			productionYear + "," +
-			dbStyle(tsType) + " )"
-		);
+		logger.info(sb.toString());
+		statement.executeUpdate(sb.toString());
+	}
+
+	@Override
+	public boolean hasCarNumber(String carNumber) {
+		Logger logger = LoggerFactory.getLogger(PostgresSQL.class);
+		try {
+			logger.info("Entering hasCarNumber() method");
+			ResultSet result = statement.executeQuery("select * from " + tableName + " where transport_carNumber = " + "\'" + carNumber + "\'");
+			if (result.next()) {
+				logger.info("Has number");
+				return true;
+			} else {
+				logger.info("Has not number");
+				return false;
+			}
+		} catch (Exception e) {
+			logger.error("Error at database select operation", e);
+			throw new RuntimeException();
+		}
 	}
 
 	private String dbStyle(String s) {

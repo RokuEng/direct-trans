@@ -28,14 +28,19 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="303e8b51-cf6a-443a-a4ad-7f21a216e451">
-      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[select * from transport where 1>0 and  transport_mark = 'Toyota' and]]></console>
+      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[select * from transport where transport_carnumber='В101ВА']]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="303e8b51-cf6a-443a-a4ad-7f21a216e451" object-ref="consoles/Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="303e8b51-cf6a-443a-a4ad-7f21a216e451" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="303e8b51-cf6a-443a-a4ad-7f21a216e451" dataset="public.transport" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
