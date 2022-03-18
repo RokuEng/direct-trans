@@ -21,7 +21,7 @@ public abstract class Application {
 	public abstract void createEditStage();
 	public abstract void closeEditStage();
 	public abstract void saveTransport();
-	public abstract List<Transport> findTransports(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType);
+	public abstract List<Transport> findTransports(Attribute... attributes);
 	public abstract boolean updateTransports(String carNumber, Attribute... attributes);
 	public abstract boolean hasCarNumber(String carNumber);
 }

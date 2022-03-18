@@ -1,6 +1,8 @@
 package main;
 
 import application.Application;
+import data.Attribute;
+import data.Field;
 import data.Transport;
 import data.Type;
 import edit.EditController;
@@ -14,6 +16,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Locale;
+
+import static data.Field.*;
 
 public final class Controller {
 	private static Application app;
@@ -106,13 +110,13 @@ public final class Controller {
 		logger.info("Find transport button is pressed");
 
 		List<Transport> transports = app.findTransports(
-			modelField.getCharacters().toString(),
-			categoryField.getCharacters().toString(),
-			markField.getCharacters().toString(),
-			carNumberField.getCharacters().toString(),
-			hasTrailerField.getCharacters().toString(),
-			productionYearField.getCharacters().toString(),
-			String.valueOf(tsTypeBox.getValue())
+			new Attribute(modelField.getText(), MODEL),
+			new Attribute(categoryField.getText(), CATEGORY),
+			new Attribute(markField.getText(),MARK),
+			new Attribute(carNumberField.getText(), CAR_NUMBER),
+			new Attribute(hasTrailerField.getText(), HAS_TRAILER),
+			new Attribute(productionYearField.getText(),PRODUCTION_YEAR),
+			new Attribute(String.valueOf(tsTypeBox.getValue()),TS_TYPE)
 		);
 
 		dataTable.getItems().clear();

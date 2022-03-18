@@ -46,8 +46,8 @@ public final class JFXApplication extends Application {
 	}
 
 	@Override
-	public List<Transport> findTransports(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType) {
-		return database.select(model, category, mark, carNumber, hasTrailer, productionYear, tsType);
+	public List<Transport> findTransports(Attribute... attributes) {
+		return database.select(attributes);
 	}
 
 

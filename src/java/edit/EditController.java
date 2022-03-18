@@ -69,7 +69,6 @@ public class EditController {
 			new Attribute(modelField.getText(), MODEL),
 			new Attribute(categoryField.getText(),CATEGORY),
 			new Attribute(markField.getText(), MARK),
-//			new Attribute(carNumberField.getText(), CAR_NUMBER),
 			new Attribute(hasTrailerField.getText(), HAS_TRAILER),
 			new Attribute(productionYearField.getText(),PRODUCTION_YEAR),
 			new Attribute(String.valueOf(tsTypeBox.getValue()), TS_TYPE)

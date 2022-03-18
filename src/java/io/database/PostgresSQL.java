@@ -40,26 +40,19 @@ public class PostgresSQL implements Database {
 	}
 
 	@Override
-	public List<Transport> select(String model, String category, String mark, String carNumber, String hasTrailer, String productionYear, String tsType) {
+	public List<Transport> select(Attribute... attributes) {
 		try {
 			List<Transport> list = new ArrayList<>();
 			StringBuilder sb = new StringBuilder();
 
 			sb.append("select * from " + tableName + " where 1>0 and ");
-			if(!model.isEmpty())
-				sb.append(" transport_model = " + dbStyle(model) + " and ");
-			if(!category.isEmpty())
-				sb.append(" transport_category = " + dbStyle(category) + " and ");
-			if(!mark.isEmpty())
-				sb.append(" transport_mark = " + dbStyle(mark) + " and ");
-			if(!carNumber.isEmpty())
-				sb.append(" transport_carNumber = " + dbStyle(carNumber) + " and ");
-			if(!hasTrailer.isEmpty())
-				sb.append(" transport_hasTrailer = " + hasTrailer + " and ");
-			if(!productionYear.isEmpty())
-				sb.append(" transport_productionYear = " + productionYear + " and ");
-			if(tsType!="null" && !tsType.equals(""))
-				sb.append(" transport_tsType = " + dbStyle(tsType) + " and ");
+
+			for (Attribute attribute : attributes) {
+				if(!attribute.getData().isBlank() && !attribute.getData().equals("null")) {
+					sb.append(attribute.getField().getString() + " = " + dbStyle(attribute.getData()) + " and ");
+				}
+			}
+
 			sb.append(" 1 > 0");
 
 			Logger logger = LoggerFactory.getLogger(this.getClass());
