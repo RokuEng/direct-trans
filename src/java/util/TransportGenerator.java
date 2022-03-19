@@ -23,21 +23,15 @@ public class TransportGenerator {
 	private static String[] MODELS = {"Rio", "Gate", "Editor", "Map", "Fortune", "Freedom", "Skill", "Union", "Assistance", "Road"};
 	private static Type[] TYPES = Type.class.getEnumConstants();
 
-	public static void generate(int count, String tableName) {
+	public static void generate(String tableName) {
 		database.connect(tableName);
 		try {
-			if (count > 899) {
-				throw new RuntimeException();
-			}
-			for(int i = 100; i < 100+count; i++) {
+			for(int i = 100; i < 999; i++) {
 				database.insert(
-					pickRandom(MODELS),
+					pickRandom(LETTERS) + i + pickRandom(LETTERS) + pickRandom(LETTERS),
+					new Attribute(pickRandom(MODELS), MODEL),
 					new Attribute(pickRandom(CATEGORIES), CATEGORY),
 					new Attribute(pickRandom(MARKS), MARK),
-					new Attribute(
-						pickRandom(LETTERS) + i + pickRandom(LETTERS) + pickRandom(LETTERS),
-						CAR_NUMBER
-					),
 					new Attribute(pickRandom(STATEMENTS), HAS_TRAILER),
 					new Attribute(String.valueOf((1900 + random.nextInt(123))), PRODUCTION_YEAR),
 					new Attribute(pickRandom(TYPES), TS_TYPE)
