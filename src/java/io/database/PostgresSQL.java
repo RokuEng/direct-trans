@@ -72,7 +72,6 @@ public class PostgresSQL implements Database {
 				);
 			}
 
-			logger.info(list.toString());
 			return list;
 		} catch (Exception e) {
 			Logger logger = LoggerFactory.getLogger(PostgresSQL.class);
