@@ -11,4 +11,6 @@ module direct.trans {
 	opens resources;
 	opens edit;
 	opens main;
+	opens data.transport;
+	opens data.transport.units;
 }

@@ -2,8 +2,7 @@ package main;
 
 import application.Application;
 import data.Attribute;
-import data.Field;
-import data.Transport;
+import data.transport.SimpleTransport;
 import data.Type;
 import edit.EditController;
 import edit.EditWindow;
@@ -44,25 +43,25 @@ public final class Controller {
 	private Button editButton;
 
 	@FXML
-	private TableColumn<Transport, String> markColumn;
+	private TableColumn<SimpleTransport, String> markColumn;
 
 	@FXML
-	private TableColumn<Transport, String> modelColumn;
+	private TableColumn<SimpleTransport, String> modelColumn;
 
 	@FXML
-	private TableColumn<Transport, String> typeColumn;
+	private TableColumn<SimpleTransport, String> typeColumn;
 
 	@FXML
-	private TableColumn<Transport, String> productionYearColumn;
+	private TableColumn<SimpleTransport, String> productionYearColumn;
 
 	@FXML
-	private TableColumn<Transport, String> categoryColumn;
+	private TableColumn<SimpleTransport, String> categoryColumn;
 
 	@FXML
-	private TableColumn<Transport, String> trailerColumn;
+	private TableColumn<SimpleTransport, String> trailerColumn;
 
 	@FXML
-	private TableColumn<Transport, String> carNumberColumn;
+	private TableColumn<SimpleTransport, String> carNumberColumn;
 
 	@FXML
 	private TableView dataTable;
@@ -109,7 +108,7 @@ public final class Controller {
 		Logger logger = LoggerFactory.getLogger(EditWindow.class);
 		logger.info("Find transport button is pressed");
 
-		List<Transport> transports = app.findTransports(
+		List<SimpleTransport> transports = app.findTransports(
 			new Attribute(modelField.getText(), MODEL),
 			new Attribute(categoryField.getText(), CATEGORY),
 			new Attribute(markField.getText(),MARK),
@@ -121,7 +120,7 @@ public final class Controller {
 
 		dataTable.refresh();
 		dataTable.getItems().clear();
-		for (Transport ts : transports) {
+		for (SimpleTransport ts : transports) {
 			dataTable.getItems().add(ts);
 		}
 	}

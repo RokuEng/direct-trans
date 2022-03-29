@@ -1,19 +1,16 @@
 package io.database;
 
 import data.Attribute;
-import data.Field;
-import data.Transport;
+import data.transport.units.SerializableTransport;
+import data.transport.SimpleTransport;
 import data.Type;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import io.Access;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static data.Field.*;
 
 public class PostgresSQL implements Database {
 
@@ -39,9 +36,9 @@ public class PostgresSQL implements Database {
 	}
 
 	@Override
-	public List<Transport> select(Attribute... attributes) {
+	public List<SimpleTransport> select(Attribute... attributes) {
 		try {
-			List<Transport> list = new ArrayList<>();
+			List<SimpleTransport> list = new ArrayList<>();
 			StringBuilder sb = new StringBuilder();
 
 			sb.append("select * from " + tableName + " where 1>0 and ");
@@ -60,7 +57,7 @@ public class PostgresSQL implements Database {
 			ResultSet result = statement.executeQuery(sb.toString());
 
 			while (result.next()) {
-				list.add(new Transport(
+				list.add(new SerializableTransport(
 					result.getString("transport_mark"),
 					result.getString("transport_model"),
 					result.getString("transport_category"),

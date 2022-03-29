@@ -1,6 +1,8 @@
-package data;
+package data.transport;
 
-public final class Transport {
+import data.Type;
+
+public abstract class SimpleTransport implements Transport {
 	private String mark;
 	private String model;
 	private String category;
@@ -8,7 +10,8 @@ public final class Transport {
 	private Type tsType;
 	private int productionYear;
 	private boolean hasTrailer;
-	public Transport(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer) {
+
+	public SimpleTransport(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer) {
 		this.mark = mark;
 		this.model = model;
 		this.category = category;
@@ -18,33 +21,42 @@ public final class Transport {
 		this.hasTrailer = hasTrailer;
 	}
 
+	@Override
 	public String getMark() {
 		return mark;
 	}
 
+	@Override
 	public String getModel() {
 		return model;
 	}
 
+	@Override
 	public String getCategory() {
 		return category;
 	}
 
+	@Override
 	public String getCarNumber() {
 		return carNumber;
 	}
 
+	@Override
 	public String getTsType() {
 		return tsType.getText();
 	}
 
+	@Override
 	public int getProductionYear() {
 		return productionYear;
 	}
 
+	@Override
 	public boolean isHasTrailer() {
 		return hasTrailer;
 	}
+
+	/* Methods to implement in subclass */
 
 	@Override
 	public String toString() {

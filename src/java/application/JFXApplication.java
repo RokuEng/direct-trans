@@ -1,7 +1,7 @@
 package application;
 
 import data.Attribute;
-import data.Transport;
+import data.transport.SimpleTransport;
 import edit.EditWindow;
 import io.database.Database;
 import javafx.scene.Parent;
@@ -46,7 +46,7 @@ public final class JFXApplication extends Application {
 	}
 
 	@Override
-	public List<Transport> findTransports(Attribute... attributes) {
+	public List<SimpleTransport> findTransports(Attribute... attributes) {
 		return database.select(attributes);
 	}
 
