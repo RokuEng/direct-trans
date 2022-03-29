@@ -6,21 +6,28 @@ import data.passanger.Creature;
 import data.passanger.Human;
 import data.transport.traits.SimpleDriveable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class SimpleBus extends SimpleDriveable implements Bus {
 
-	private List<Goods> cazes;
+	private List<Goods> goods;
 	private List<Creature> passengers;
 	private double[] to;
 
 	public List<Goods> getAllGoods() {
-		return cazes;
+		return goods;
 	}
 
+	@Override
 	public List<Creature> getPassengers() {
 		return passengers;
+	}
+
+	@Override
+	public List<Goods> getGoods() {
+		return goods;
 	}
 
 	@Override
@@ -41,7 +48,7 @@ public abstract class SimpleBus extends SimpleDriveable implements Bus {
 
 	@Override
 	public void addAllGoods(Goods... goods) {
-		this.cazes.addAll(Arrays.asList(goods));
+		this.goods.addAll(Arrays.asList(goods));
 	}
 
 	@Override
@@ -57,17 +64,19 @@ public abstract class SimpleBus extends SimpleDriveable implements Bus {
 
 	@Override
 	public void addGoods(Goods goods) {
-		this.cazes.add(goods);
+		this.goods.add(goods);
 	}
 
 	@Override
 	public Creature getPassenger() {
-		throw new UnsupportedOperationException("Bus have List<Creature> of passangers");
+		throw new UnsupportedOperationException("Bus have List<Creature> of passengers");
 	}
 
-	public SimpleBus(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, int speed, Human driver, double[] from, List<Goods> cazes, List<Creature> passengers) {
+
+
+	public SimpleBus(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, int speed, Human driver, double[] from, List<Goods> goods, List<Creature> passengers) {
 		super(mark, model, category, carNumber, tsType, productionYear, hasTrailer, speed, driver, from);
-		this.cazes = cazes;
+		this.goods = goods;
 		this.passengers = passengers;
 	}
 }

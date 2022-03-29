@@ -9,7 +9,7 @@ import data.transport.traits.normal.SimpleBus;
 import java.util.List;
 
 public class Minibus extends SimpleBus {
-	public Minibus(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, int speed, Human driver, double[] from, List<Goods> cazes, List<Creature> passengers) {
-		super(mark, model, category, carNumber, tsType, productionYear, hasTrailer, speed, driver, from, cazes, passengers);
+	public Minibus(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, int speed, Human driver, double[] from, List<Goods> goods, List<Creature> passengers) {
+		super(mark, model, category, carNumber, tsType, productionYear, hasTrailer, speed, driver, from, goods, passengers);
 	}
 }

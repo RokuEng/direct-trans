@@ -18,6 +18,8 @@ public class TransportHandler {
 
 		Human driver = new Human("Alex", 18,70.0,true, "Toyota");
 		Human passenger = new Human("Jones", 17,65.0,false, "Lada");
+		Human passenger2 = new Human("Billy", 23,80.0,true, "Kamaz");
+		Human passenger3 = new Human("Zet", 14,40.0,false, "Kia");
 
 		Car car = new GeneralPurposeCar(
 			"Toyota",
@@ -49,13 +51,9 @@ public class TransportHandler {
 			new ArrayList<>()
 		);
 
-		car.addDriver(driver);
-		car.addPassenger(passenger);
-
-		System.out.println(Arrays.toString(car.getPos()));
-		car.moveTo(10, 10);
-		System.out.println(Arrays.toString(car.getPos()));
-
-		System.out.println(car.getPassenger());
+		bus.addDriver(driver);
+		System.out.println(bus.getPassengers());
+		bus.addAllPassengers(passenger, passenger2, passenger3);
+		System.out.println(bus.getPassenger());
 	}
 }
