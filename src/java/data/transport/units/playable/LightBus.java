@@ -15,6 +15,8 @@ import java.util.List;
 
 public class LightBus extends SimpleDriveable implements Bus {
 
+	public static final String symbol = "B";
+
 	List<Creature> passengers = new ArrayList<>();
 	List<Goods> goods = new ArrayList<>();
 
@@ -40,7 +42,7 @@ public class LightBus extends SimpleDriveable implements Bus {
 
 	@Override
 	public String getSymbol() {
-		return "B";
+		return symbol;
 	}
 
 	public LightBus(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {

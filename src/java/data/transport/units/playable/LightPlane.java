@@ -7,6 +7,9 @@ import logic.Position;
 import logic.World;
 
 public class LightPlane extends SimpleDriveable implements Plane {
+
+	public static final String symbol = "P";
+
 	@Override
 	public void flyTo(int x, int y) {
 		if (getWorld().isCanFly() && getWorld().getMap()[y-1][x-1].canMoveThrough(this)) {
@@ -17,7 +20,7 @@ public class LightPlane extends SimpleDriveable implements Plane {
 
 	@Override
 	public String getSymbol() {
-		return "P";
+		return symbol;
 	}
 
 	public LightPlane(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {

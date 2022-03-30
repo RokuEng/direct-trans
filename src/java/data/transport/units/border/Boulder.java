@@ -9,7 +9,7 @@ public class Boulder extends SimpleUnit implements Unit {
 
 	@Override
 	public String getSymbol() {
-		return "n";
+		return "0";
 	}
 
 	public Boulder(Position pos, double weight) {

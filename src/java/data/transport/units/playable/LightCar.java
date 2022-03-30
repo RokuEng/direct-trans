@@ -11,6 +11,8 @@ import logic.World;
 
 public class LightCar extends SimpleDriveable implements Car {
 
+	public static final String symbol = "C";
+
 	private Creature passenger;
 
 	private Goods goods;
@@ -40,7 +42,7 @@ public class LightCar extends SimpleDriveable implements Car {
 
 	@Override
 	public String getSymbol() {
-		return "C";
+		return symbol;
 	}
 
 	public LightCar(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {

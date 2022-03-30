@@ -7,6 +7,9 @@ import logic.Position;
 import logic.World;
 
 public class LightBulldozer extends SimpleDriveable implements Bulldozer {
+
+	public static final String symbol = "W";
+
 	private void destroy(int x, int y) {
 		if (super.getWorld().getMap()[y][x].canMoveThrough(this)) {
 			getWorld().getUnits()[y][x] = null;
@@ -72,7 +75,7 @@ public class LightBulldozer extends SimpleDriveable implements Bulldozer {
 
 	@Override
 	public String getSymbol() {
-		return "B";
+		return symbol;
 	}
 
 	public LightBulldozer(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {

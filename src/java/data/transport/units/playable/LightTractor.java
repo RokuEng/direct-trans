@@ -8,6 +8,9 @@ import logic.Position;
 import logic.World;
 
 public class LightTractor extends SimpleDriveable implements Tractor {
+
+	public static final String symbol = "Y";
+
 	private Unit unit;
 
 	@Override
@@ -38,7 +41,7 @@ public class LightTractor extends SimpleDriveable implements Tractor {
 
 	@Override
 	public String getSymbol() {
-		return "Y";
+		return symbol;
 	}
 
 	public LightTractor(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {

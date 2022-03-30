@@ -6,6 +6,6 @@ public class Asphalt extends Land {
 
 	@Override
 	public String getSymbol() {
-		return "O";
+		return "~";
 	}
 }

@@ -5,6 +5,9 @@ import data.transport.traits.Driveable;
 import data.transport.traits.other.Plane;
 import data.transport.traits.special.Bulldozer;
 import data.transport.traits.special.Tractor;
+import data.transport.units.border.Boulder;
+import data.transport.units.playable.*;
+import logic.worldobjects.*;
 
 import java.util.Scanner;
 
@@ -13,6 +16,45 @@ public class TransportHandler {
 	public static World world = World.WorldFactory.generateWorld(World.WorldType.STANDARD);
 
 	public static void main(String[] args) {
+
+		System.out.println("____________________Направления____________________");
+		System.out.println("u - Вверх");
+		System.out.println("d - Вниз");
+		System.out.println("l - Влево");
+		System.out.println("lu - Влево вверх");
+		System.out.println("ld - Влево вниз");
+		System.out.println("r - Вправо");
+		System.out.println("ru - Вправо вверх");
+		System.out.println("rd - Вправо вниз");
+		System.out.println();
+		System.out.println("____________________Управление____________________");
+		System.out.println("Для управления техникой нужно ввести символ техники, двоеточие и команду, пример: ");
+		System.out.println("C:drv r r r r r - Легковой автомобиль попытается поехать вправо пять раз");
+		System.out.println();
+		System.out.println("____________________Общие команды____________________");
+		System.out.println("*:drv [Направление1] ... [НаправлениеN]");
+		System.out.println();
+		System.out.println("____________________Мир____________________");
+		System.out.println("| " + new Asphalt().getSymbol() + " | - Дорога (для любых транспортных средств)");
+		System.out.println("| " + new Dirt().getSymbol() + " | - Земля (только для внедорожников)");
+		System.out.println("| " + new Water().getSymbol() + " | - Вода (непреодолимая преграда)");
+		System.out.println("| " + new Bridge().getSymbol() + " | - Мост (аналог Дороги для движения над водой)");
+		System.out.println("| " + new Land().getSymbol() + " | - Абсолютная позиция");
+		System.out.println("| " + new Runway().getSymbol() + " | - Взлётно-посадочная полоса");
+		System.out.println();
+		System.out.println("____________________Объекты____________________");
+		System.out.println("| " + new Boulder(null,0).getSymbol() + " | - Булыжник, мешает передвижению");
+		System.out.println("| " + LightCar.symbol + " | - Легковой автомобиль");
+		System.out.println("| " + OffroadCar.symbol + " | - Внедорожный автомобиль");
+		System.out.println("| " + LightBus.symbol + " | - Автобус");
+		System.out.println("| " + LightBulldozer.symbol + " | - Бульдозер ");
+		System.out.println(LightBulldozer.symbol + ":dst [Направление1] ... [НаправлениеN] - уничтожить объект");
+		System.out.println("| " + LightPlane.symbol + " | - Самолёт (Требует взлётно-посадочную полосу для перелёта)");
+		System.out.println(LightPlane.symbol + ":fly [x] [y] - Перелететь на точку {x;y}. Отсчёт от левого верхнего края {1;1}");
+		System.out.println("| " + LightTractor.symbol + " | - Трактор");
+		System.out.println(LightTractor.symbol + ":tow [Направление] - подцепить объект по направлению");
+		System.out.println(LightTractor.symbol + ":drp - отцепить объект");
+		System.out.println();
 
 		Scanner scan = new Scanner(System.in);
 

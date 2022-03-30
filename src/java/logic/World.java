@@ -103,28 +103,64 @@ public class World {
 
 	enum WorldType {
 		STANDARD(
-			MapFactory.generateMap(10,
-				0, 0, 1, 1, 1, 3, 3, 3, 1, 1,
-				2, 2, 1, 1, 3, 3, 3, 1, 1, 1,
-				2, 1, 1, 1, 3, 3, 3, 1, 1, 1,
-				2, 1, 1, 3, 3, 3, 1, 1, 1, 1,
-				2, 1, 1, 3, 3, 3, 1, 1, 1, 1,
-				2, 1, 1, 3, 3, 3, 1, 1, 1, 1,
-				1, 2, 1, 1, 3, 3, 3, 1, 2, 2,
-				1, 1, 2, 2, 4, 4, 4, 2, 1, 1,
-				1, 1, 1, 1, 3, 3, 3, 1, 1, 1,
-				1, 1, 1, 3, 3, 3, 1, 1, 1, 1
+			MapFactory.generateMap(20,
+				0, 0, 2, 2, 1, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3,
+				2, 2, 2, 2, 4, 4, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3,
+				5, 5, 2, 2, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1,
+				5, 5, 2, 3, 3, 3, 1, 1, 1, 1, 2, 1, 3, 3, 3, 3, 3, 1, 1, 1,
+				5, 5, 1, 3, 3, 3, 1, 1, 1, 1, 3, 4, 3, 3, 3, 1, 1, 1, 1, 1,
+				1, 1, 1, 3, 3, 3, 1, 1, 3, 3, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				3, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				3, 3, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				1, 3, 4, 3, 3, 3, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				1, 1, 4, 3, 3, 3, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1,
+				1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1,
+				1, 1, 1, 1, 1, 1, 4, 4, 4, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2,
+				1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 2, 1, 5, 5, 1, 2,
+				1, 0, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 2, 2, 5, 5, 2, 2,
+				0, 0, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 1, 1, 2, 2, 5, 5, 2, 2
 				),
 			new ArrayList<>() {{
 				add(new LightCar("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
 					1000, new Position(0,0), null));
-				add(new Boulder(new Position(0,4), 1000));
+				add(new LightBus("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
+					1000, new Position(1,0), null));
+				add(new LightPlane("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
+					1000, new Position(0,2), null));
+				add(new OffroadCar("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
+					1000, new Position(0,19), null));
+				add(new LightTractor("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
+					1000, new Position(1,19), null));
+				add(new LightBulldozer("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
+					1000, new Position(1,18), null));
+
+				add(new Boulder(new Position(5,16), 1000));
+				add(new Boulder(new Position(6,16), 1000));
+				add(new Boulder(new Position(7,16), 1000));
+				add(new Boulder(new Position(8,16), 1000));
+				add(new Boulder(new Position(8,15), 1000));
+				add(new Boulder(new Position(8,17), 1000));
+				add(new Boulder(new Position(9,16), 1000));
+
 				add(new Boulder(new Position(0,5), 1000));
 				add(new Boulder(new Position(0,6), 1000));
-				add(new Boulder(new Position(1,5), 1000));
 				add(new Boulder(new Position(1,6), 1000));
-				add(new LightTractor("","","","", Type.GENERAL_PURPOSE_CAR, 0, false,
-					1000, new Position(1,0), null));
+
+				add(new Boulder(new Position(7,3), 1000));
+				add(new Boulder(new Position(7,4), 1000));
+
+				add(new Boulder(new Position(2,11), 1000));
+				add(new Boulder(new Position(1,11), 1000));
+				add(new Boulder(new Position(1,12), 1000));
+				add(new Boulder(new Position(2,12), 1000));
+
+				add(new Boulder(new Position(13,13), 1000));
+
 			}},
 			true
 		),
@@ -236,6 +272,8 @@ public class World {
 					return new Water();
 				case Bridge.ID:
 					return new Bridge();
+				case Runway.ID:
+					return new Runway();
 			}
 			throw new RuntimeException("Cant find object with specific id");
 		}

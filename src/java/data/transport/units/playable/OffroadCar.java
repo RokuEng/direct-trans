@@ -7,9 +7,11 @@ import logic.World;
 
 public class OffroadCar extends LightCar implements Offroad {
 
+	public static final String symbol = "G";
+
 	@Override
 	public String getSymbol() {
-		return "G";
+		return symbol;
 	}
 
 	public OffroadCar(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer, double weight, Position pos, World world) {
