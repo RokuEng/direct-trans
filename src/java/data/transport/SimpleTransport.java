@@ -1,6 +1,7 @@
 package data.transport;
 
 import data.Type;
+import logic.World;
 
 public abstract class SimpleTransport implements Transport {
 	private String mark;
@@ -10,6 +11,8 @@ public abstract class SimpleTransport implements Transport {
 	private Type tsType;
 	private int productionYear;
 	private boolean hasTrailer;
+	private World world;
+	private String symbol = " ";
 
 	public SimpleTransport(String mark, String model, String category, String carNumber, Type tsType, int productionYear, boolean hasTrailer) {
 		this.mark = mark;
@@ -69,5 +72,20 @@ public abstract class SimpleTransport implements Transport {
 			", productionYear=" + productionYear +
 			", hasTrailer=" + hasTrailer +
 			'}';
+	}
+
+	@Override
+	public void setWorld(World world) {
+		this.world = world;
+	}
+
+	@Override
+	public String getSymbol() {
+		return symbol;
+	}
+
+	@Override
+	public World getWorld() {
+		return world;
 	}
 }

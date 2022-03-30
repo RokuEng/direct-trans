@@ -13,4 +13,8 @@ module direct.trans {
 	opens main;
 	opens data.transport;
 	opens data.transport.units;
+	opens logic;
+	opens data.transport.units.playable;
+	opens data.transport.units.other;
+	opens data.transport.units.border;
 }

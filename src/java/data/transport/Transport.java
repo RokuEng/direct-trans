@@ -1,17 +1,19 @@
 package data.transport;
 
-public interface Transport {
-	abstract public String getMark();
+import data.Unit;
 
-	abstract public String getModel();
+public interface Transport extends Unit {
+	String getMark();
 
-	abstract public String getCategory();
+	String getModel();
 
-	abstract public String getCarNumber();
+	String getCategory();
 
-	abstract public String getTsType();
+	String getCarNumber();
 
-	abstract public int getProductionYear();
+	String getTsType();
 
-	abstract public boolean isHasTrailer();
+	int getProductionYear();
+
+	boolean isHasTrailer();
 }

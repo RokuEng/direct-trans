@@ -1,7 +1,7 @@
 package io.database;
 
 import data.Attribute;
-import data.transport.units.SerializableTransport;
+import data.transport.units.other.SerializableTransport;
 import data.transport.SimpleTransport;
 import data.Type;
 
